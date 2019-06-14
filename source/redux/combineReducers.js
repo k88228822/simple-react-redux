@@ -10,7 +10,7 @@ export default function combineReducers (reducers = {}){ // 合并reducer, 返�
     let hasChange = false
     Object.entries(finalReducers).forEach(([key, itemReducer])=>{ // 遍历reducer , 执行action， 获取新的state
       const itemState = state[key]
-      const newItemState = itemReducer(action)
+      const newItemState = itemReducer(itemState, action)
       if(typeof newItemState === 'undefined') {
         throw new Error(`获取state错误-- reducer: ${key}, action: ${action}`)
       }

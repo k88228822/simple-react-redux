@@ -24,6 +24,9 @@ module.exports = {
       },
     ]
   },
+  resolve:{
+    extensions:['.css','.js','jsx']
+  },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,

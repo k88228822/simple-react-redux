@@ -1,14 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from '../source/react-redux'
+import createStore from "../source/redux/createStore";
+import reducers from './reducers'
+import Count from './container/count'
 
-class Index extends React.PureComponent {
+const store = createStore(reducers)
 
-  render() {
+class Index extends React.Component{
+  render(){
     return (
-      <div>hello index 3</div>
+      <Provider store={store}>
+        <Count />
+      </Provider>
     )
   }
-
 }
 
 export default ReactDOM.render(<Index/>, document.getElementById('root') )
