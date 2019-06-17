@@ -1,16 +1,16 @@
 import compose from './compose'
-export default function applyMiddleware() {
-  const middleWares = arguments.map(key=>arguments[key])
+export default function applyMiddleware(...middleWares) {
+
   return (createStore) => (reducer, preloadState)=> {
     const store = createStore(reducer, preloadState)
-    let _dispatch = ()=> throw new Error('正在构造，不可用')
+    let dispatch = ()=> console.log('正在构造，不可用')
     const middlewareAPI = {
       getState: store.getState,
-      dispatch: function () {return _dispatch.apply(void 0, arguments)}
+      dispatch: (...args)=>dispatch(...args)
     }
     const chain = middleWares.map(middleware => middleware(middlewareAPI))
-    _dispatch = compose.apply(void 0, chain)(store.dispatch);
+    dispatch = compose(chain)(store.dispatch);
 
-    return Object.assign({}, store, {dispatch: _dispatch})
+    return Object.assign({}, store, {dispatch})
   }
 }

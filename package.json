@@ -11,10 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "hoist-non-react-statics": "latest",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "hoist-non-react-statics": "latest"
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

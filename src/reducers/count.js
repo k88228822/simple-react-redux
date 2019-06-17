@@ -1,4 +1,4 @@
-export default function (state= {num: 1}, action) {
+export default function (state= {num: 1}, action ) {
   switch (action.type) {
     case 'add': return {
       ...state,
@@ -8,6 +8,10 @@ export default function (state= {num: 1}, action) {
       ...state,
       num: state.num - 1
     };
+    case 'addNum': return {
+      ...state,
+      num: state.num + action.payload.addNum
+    }
     default: return state
   }
 }
